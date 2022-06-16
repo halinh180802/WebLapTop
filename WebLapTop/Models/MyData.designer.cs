@@ -54,7 +54,7 @@ namespace WebLapTop.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopLapTopConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopLapTopConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
