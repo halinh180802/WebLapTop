@@ -30,12 +30,15 @@ namespace WebLapTop.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertChip(Chip instance);
-    partial void UpdateChip(Chip instance);
-    partial void DeleteChip(Chip instance);
     partial void InsertCT_DonHang(CT_DonHang instance);
     partial void UpdateCT_DonHang(CT_DonHang instance);
     partial void DeleteCT_DonHang(CT_DonHang instance);
+    partial void InsertLoaiLapTop(LoaiLapTop instance);
+    partial void UpdateLoaiLapTop(LoaiLapTop instance);
+    partial void DeleteLoaiLapTop(LoaiLapTop instance);
+    partial void InsertChip(Chip instance);
+    partial void UpdateChip(Chip instance);
+    partial void DeleteChip(Chip instance);
     partial void InsertDonHang(DonHang instance);
     partial void UpdateDonHang(DonHang instance);
     partial void DeleteDonHang(DonHang instance);
@@ -48,13 +51,10 @@ namespace WebLapTop.Models
     partial void InsertLapTop(LapTop instance);
     partial void UpdateLapTop(LapTop instance);
     partial void DeleteLapTop(LapTop instance);
-    partial void InsertLoaiLapTop(LoaiLapTop instance);
-    partial void UpdateLoaiLapTop(LoaiLapTop instance);
-    partial void DeleteLoaiLapTop(LoaiLapTop instance);
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopLapTopConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopLapTopConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,19 +83,27 @@ namespace WebLapTop.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Chip> Chips
-		{
-			get
-			{
-				return this.GetTable<Chip>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CT_DonHang> CT_DonHangs
 		{
 			get
 			{
 				return this.GetTable<CT_DonHang>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LoaiLapTop> LoaiLapTops
+		{
+			get
+			{
+				return this.GetTable<LoaiLapTop>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Chip> Chips
+		{
+			get
+			{
+				return this.GetTable<Chip>();
 			}
 		}
 		
@@ -129,193 +137,6 @@ namespace WebLapTop.Models
 			{
 				return this.GetTable<LapTop>();
 			}
-		}
-		
-		public System.Data.Linq.Table<LoaiLapTop> LoaiLapTops
-		{
-			get
-			{
-				return this.GetTable<LoaiLapTop>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Chip")]
-	public partial class Chip : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaChip;
-		
-		private string _Chip1;
-		
-		private System.Nullable<int> _MaHang;
-		
-		private EntitySet<LapTop> _LapTops;
-		
-		private EntityRef<HangChip> _HangChip;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaChipChanging(int value);
-    partial void OnMaChipChanged();
-    partial void OnChip1Changing(string value);
-    partial void OnChip1Changed();
-    partial void OnMaHangChanging(System.Nullable<int> value);
-    partial void OnMaHangChanged();
-    #endregion
-		
-		public Chip()
-		{
-			this._LapTops = new EntitySet<LapTop>(new Action<LapTop>(this.attach_LapTops), new Action<LapTop>(this.detach_LapTops));
-			this._HangChip = default(EntityRef<HangChip>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChip", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaChip
-		{
-			get
-			{
-				return this._MaChip;
-			}
-			set
-			{
-				if ((this._MaChip != value))
-				{
-					this.OnMaChipChanging(value);
-					this.SendPropertyChanging();
-					this._MaChip = value;
-					this.SendPropertyChanged("MaChip");
-					this.OnMaChipChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Chip", Storage="_Chip1", DbType="NChar(10)")]
-		public string Chip1
-		{
-			get
-			{
-				return this._Chip1;
-			}
-			set
-			{
-				if ((this._Chip1 != value))
-				{
-					this.OnChip1Changing(value);
-					this.SendPropertyChanging();
-					this._Chip1 = value;
-					this.SendPropertyChanged("Chip1");
-					this.OnChip1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaHang", DbType="Int")]
-		public System.Nullable<int> MaHang
-		{
-			get
-			{
-				return this._MaHang;
-			}
-			set
-			{
-				if ((this._MaHang != value))
-				{
-					if (this._HangChip.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaHangChanging(value);
-					this.SendPropertyChanging();
-					this._MaHang = value;
-					this.SendPropertyChanged("MaHang");
-					this.OnMaHangChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Chip_LapTop", Storage="_LapTops", ThisKey="MaChip", OtherKey="MaChip")]
-		public EntitySet<LapTop> LapTops
-		{
-			get
-			{
-				return this._LapTops;
-			}
-			set
-			{
-				this._LapTops.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HangChip_Chip", Storage="_HangChip", ThisKey="MaHang", OtherKey="MaHang", IsForeignKey=true)]
-		public HangChip HangChip
-		{
-			get
-			{
-				return this._HangChip.Entity;
-			}
-			set
-			{
-				HangChip previousValue = this._HangChip.Entity;
-				if (((previousValue != value) 
-							|| (this._HangChip.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HangChip.Entity = null;
-						previousValue.Chips.Remove(this);
-					}
-					this._HangChip.Entity = value;
-					if ((value != null))
-					{
-						value.Chips.Add(this);
-						this._MaHang = value.MaHang;
-					}
-					else
-					{
-						this._MaHang = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("HangChip");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_LapTops(LapTop entity)
-		{
-			this.SendPropertyChanging();
-			entity.Chip = this;
-		}
-		
-		private void detach_LapTops(LapTop entity)
-		{
-			this.SendPropertyChanging();
-			entity.Chip = null;
 		}
 	}
 	
@@ -532,6 +353,299 @@ namespace WebLapTop.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoaiLapTop")]
+	public partial class LoaiLapTop : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaLoaiLT;
+		
+		private string _TenLoai;
+		
+		private EntitySet<LapTop> _LapTops;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaLoaiLTChanging(int value);
+    partial void OnMaLoaiLTChanged();
+    partial void OnTenLoaiChanging(string value);
+    partial void OnTenLoaiChanged();
+    #endregion
+		
+		public LoaiLapTop()
+		{
+			this._LapTops = new EntitySet<LapTop>(new Action<LapTop>(this.attach_LapTops), new Action<LapTop>(this.detach_LapTops));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoaiLT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaLoaiLT
+		{
+			get
+			{
+				return this._MaLoaiLT;
+			}
+			set
+			{
+				if ((this._MaLoaiLT != value))
+				{
+					this.OnMaLoaiLTChanging(value);
+					this.SendPropertyChanging();
+					this._MaLoaiLT = value;
+					this.SendPropertyChanged("MaLoaiLT");
+					this.OnMaLoaiLTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoai", DbType="NVarChar(200)")]
+		public string TenLoai
+		{
+			get
+			{
+				return this._TenLoai;
+			}
+			set
+			{
+				if ((this._TenLoai != value))
+				{
+					this.OnTenLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._TenLoai = value;
+					this.SendPropertyChanged("TenLoai");
+					this.OnTenLoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiLapTop_LapTop", Storage="_LapTops", ThisKey="MaLoaiLT", OtherKey="MaLoaiLT")]
+		public EntitySet<LapTop> LapTops
+		{
+			get
+			{
+				return this._LapTops;
+			}
+			set
+			{
+				this._LapTops.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_LapTops(LapTop entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoaiLapTop = this;
+		}
+		
+		private void detach_LapTops(LapTop entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoaiLapTop = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Chip")]
+	public partial class Chip : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaChip;
+		
+		private string _Chip1;
+		
+		private System.Nullable<int> _MaHang;
+		
+		private EntitySet<LapTop> _LapTops;
+		
+		private EntityRef<HangChip> _HangChip;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaChipChanging(int value);
+    partial void OnMaChipChanged();
+    partial void OnChip1Changing(string value);
+    partial void OnChip1Changed();
+    partial void OnMaHangChanging(System.Nullable<int> value);
+    partial void OnMaHangChanged();
+    #endregion
+		
+		public Chip()
+		{
+			this._LapTops = new EntitySet<LapTop>(new Action<LapTop>(this.attach_LapTops), new Action<LapTop>(this.detach_LapTops));
+			this._HangChip = default(EntityRef<HangChip>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChip", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaChip
+		{
+			get
+			{
+				return this._MaChip;
+			}
+			set
+			{
+				if ((this._MaChip != value))
+				{
+					this.OnMaChipChanging(value);
+					this.SendPropertyChanging();
+					this._MaChip = value;
+					this.SendPropertyChanged("MaChip");
+					this.OnMaChipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Chip", Storage="_Chip1", DbType="NChar(10)")]
+		public string Chip1
+		{
+			get
+			{
+				return this._Chip1;
+			}
+			set
+			{
+				if ((this._Chip1 != value))
+				{
+					this.OnChip1Changing(value);
+					this.SendPropertyChanging();
+					this._Chip1 = value;
+					this.SendPropertyChanged("Chip1");
+					this.OnChip1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaHang", DbType="Int")]
+		public System.Nullable<int> MaHang
+		{
+			get
+			{
+				return this._MaHang;
+			}
+			set
+			{
+				if ((this._MaHang != value))
+				{
+					if (this._HangChip.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaHangChanging(value);
+					this.SendPropertyChanging();
+					this._MaHang = value;
+					this.SendPropertyChanged("MaHang");
+					this.OnMaHangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Chip_LapTop", Storage="_LapTops", ThisKey="MaChip", OtherKey="MaChip")]
+		public EntitySet<LapTop> LapTops
+		{
+			get
+			{
+				return this._LapTops;
+			}
+			set
+			{
+				this._LapTops.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HangChip_Chip", Storage="_HangChip", ThisKey="MaHang", OtherKey="MaHang", IsForeignKey=true)]
+		public HangChip HangChip
+		{
+			get
+			{
+				return this._HangChip.Entity;
+			}
+			set
+			{
+				HangChip previousValue = this._HangChip.Entity;
+				if (((previousValue != value) 
+							|| (this._HangChip.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HangChip.Entity = null;
+						previousValue.Chips.Remove(this);
+					}
+					this._HangChip.Entity = value;
+					if ((value != null))
+					{
+						value.Chips.Add(this);
+						this._MaHang = value.MaHang;
+					}
+					else
+					{
+						this._MaHang = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("HangChip");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_LapTops(LapTop entity)
+		{
+			this.SendPropertyChanging();
+			entity.Chip = this;
+		}
+		
+		private void detach_LapTops(LapTop entity)
+		{
+			this.SendPropertyChanging();
+			entity.Chip = null;
 		}
 	}
 	
@@ -1495,120 +1609,6 @@ namespace WebLapTop.Models
 		{
 			this.SendPropertyChanging();
 			entity.LapTop = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoaiLapTop")]
-	public partial class LoaiLapTop : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaLoaiLT;
-		
-		private string _TenLoai;
-		
-		private EntitySet<LapTop> _LapTops;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaLoaiLTChanging(int value);
-    partial void OnMaLoaiLTChanged();
-    partial void OnTenLoaiChanging(string value);
-    partial void OnTenLoaiChanged();
-    #endregion
-		
-		public LoaiLapTop()
-		{
-			this._LapTops = new EntitySet<LapTop>(new Action<LapTop>(this.attach_LapTops), new Action<LapTop>(this.detach_LapTops));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoaiLT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaLoaiLT
-		{
-			get
-			{
-				return this._MaLoaiLT;
-			}
-			set
-			{
-				if ((this._MaLoaiLT != value))
-				{
-					this.OnMaLoaiLTChanging(value);
-					this.SendPropertyChanging();
-					this._MaLoaiLT = value;
-					this.SendPropertyChanged("MaLoaiLT");
-					this.OnMaLoaiLTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoai", DbType="NVarChar(200)")]
-		public string TenLoai
-		{
-			get
-			{
-				return this._TenLoai;
-			}
-			set
-			{
-				if ((this._TenLoai != value))
-				{
-					this.OnTenLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._TenLoai = value;
-					this.SendPropertyChanged("TenLoai");
-					this.OnTenLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiLapTop_LapTop", Storage="_LapTops", ThisKey="MaLoaiLT", OtherKey="MaLoaiLT")]
-		public EntitySet<LapTop> LapTops
-		{
-			get
-			{
-				return this._LapTops;
-			}
-			set
-			{
-				this._LapTops.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_LapTops(LapTop entity)
-		{
-			this.SendPropertyChanging();
-			entity.LoaiLapTop = this;
-		}
-		
-		private void detach_LapTops(LapTop entity)
-		{
-			this.SendPropertyChanging();
-			entity.LoaiLapTop = null;
 		}
 	}
 }

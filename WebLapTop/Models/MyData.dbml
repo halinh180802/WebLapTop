@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopLapTop" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-5UK2GU17;Initial Catalog=ShopLapTop;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ShopLapTopConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Chip" Member="Chips">
-    <Type Name="Chip">
-      <Column Name="MaChip" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Chip" Member="Chip1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MaHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Chip_LapTop" Member="LapTops" ThisKey="MaChip" OtherKey="MaChip" Type="LapTop" />
-      <Association Name="HangChip_Chip" Member="HangChip" ThisKey="MaHang" OtherKey="MaHang" Type="HangChip" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MSI\MSSQLSERVER01;Initial Catalog=ShopLapTop;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ShopLapTopConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CT_DonHang" Member="CT_DonHangs">
     <Type Name="CT_DonHang">
       <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -17,6 +8,22 @@
       <Column Name="Gia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Association Name="DonHang_CT_DonHang" Member="DonHang" ThisKey="MaDH" OtherKey="MaDH" Type="DonHang" IsForeignKey="true" />
       <Association Name="LapTop_CT_DonHang" Member="LapTop" ThisKey="MaLapTop" OtherKey="MaLapTop" Type="LapTop" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiLapTop" Member="LoaiLapTops">
+    <Type Name="LoaiLapTop">
+      <Column Name="MaLoaiLT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="LoaiLapTop_LapTop" Member="LapTops" ThisKey="MaLoaiLT" OtherKey="MaLoaiLT" Type="LapTop" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Chip" Member="Chips">
+    <Type Name="Chip">
+      <Column Name="MaChip" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Chip" Member="Chip1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Chip_LapTop" Member="LapTops" ThisKey="MaChip" OtherKey="MaChip" Type="LapTop" />
+      <Association Name="HangChip_Chip" Member="HangChip" ThisKey="MaHang" OtherKey="MaHang" Type="HangChip" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DonHang" Member="DonHangs">
@@ -64,13 +71,6 @@
       <Association Name="LapTop_CT_DonHang" Member="CT_DonHangs" ThisKey="MaLapTop" OtherKey="MaLapTop" Type="CT_DonHang" />
       <Association Name="Chip_LapTop" Member="Chip" ThisKey="MaChip" OtherKey="MaChip" Type="Chip" IsForeignKey="true" />
       <Association Name="LoaiLapTop_LapTop" Member="LoaiLapTop" ThisKey="MaLoaiLT" OtherKey="MaLoaiLT" Type="LoaiLapTop" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.LoaiLapTop" Member="LoaiLapTops">
-    <Type Name="LoaiLapTop">
-      <Column Name="MaLoaiLT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Association Name="LoaiLapTop_LapTop" Member="LapTops" ThisKey="MaLoaiLT" OtherKey="MaLoaiLT" Type="LapTop" />
     </Type>
   </Table>
 </Database>
