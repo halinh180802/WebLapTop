@@ -1,0 +1,81 @@
+﻿@model WebLapTop.Models.LapTop
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LapTop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLoaiLT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiLT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLapTop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLapTop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.Hinh)" width="200px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaChip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaChip)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListLapTop", "LapTop")
+        </div>
+    }
+</div>

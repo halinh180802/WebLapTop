@@ -1,0 +1,27 @@
+﻿@model WebLapTop.Models.LoaiLapTop
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>Loại LapTop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiLT }) |
+    @Html.ActionLink("Back to List", "Index", "LoaiLapTop")
+</p>

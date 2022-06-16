@@ -1,0 +1,35 @@
+﻿@model IEnumerable <WebLapTop.Models.LoaiLapTop>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>THÔNG TIN LOẠI LOPTOP</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "LoaiLapTop")
+</p>
+<table class="table">
+    <tr>
+        <th> Mã loại LopTop </th>
+        <th> Tên loại LopTop</th>
+
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@Html.DisplayFor(modelItem => item.MaLoaiLT)</td>
+            <td>@Html.DisplayFor(modelItem => item.TenLoai)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiLT }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.MaLoaiLT }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaLoaiLT })
+            </td>
+        </tr>
+    }
+</table>

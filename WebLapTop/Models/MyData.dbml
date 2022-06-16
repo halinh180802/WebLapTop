@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopLapTop" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-5UK2GU17;Initial Catalog=ShopLapTop;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ShopLapTopConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Chip" Member="Chips">
+    <Type Name="Chip">
+      <Column Name="MaChip" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Chip" Member="Chip1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Chip_LapTop" Member="LapTops" ThisKey="MaChip" OtherKey="MaChip" Type="LapTop" />
+      <Association Name="HangChip_Chip" Member="HangChip" ThisKey="MaHang" OtherKey="MaHang" Type="HangChip" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CT_DonHang" Member="CT_DonHangs">
+    <Type Name="CT_DonHang">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaLapTop" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="DonHang_CT_DonHang" Member="DonHang" ThisKey="MaDH" OtherKey="MaDH" Type="DonHang" IsForeignKey="true" />
+      <Association Name="LapTop_CT_DonHang" Member="LapTop" ThisKey="MaLapTop" OtherKey="MaLapTop" Type="LapTop" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonHang" Member="DonHangs">
+    <Type Name="DonHang">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ThanhToan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GiaoHang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDat" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NgayGiao" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DonHang_CT_DonHang" Member="CT_DonHangs" ThisKey="MaDH" OtherKey="MaDH" Type="CT_DonHang" />
+      <Association Name="KhachHang_DonHang" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HangChip" Member="HangChips">
+    <Type Name="HangChip">
+      <Column Name="MaHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenHang" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HangChip_Chip" Member="Chips" ThisKey="MaHang" OtherKey="MaHang" Type="Chip" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenDangNhap" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_DonHang" Member="DonHangs" ThisKey="MaKH" OtherKey="MaKH" Type="DonHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LapTop" Member="LapTops">
+    <Type Name="LapTop">
+      <Column Name="MaLapTop" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaLoaiLT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenLapTop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hinh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgayCapNhap" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaChip" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LapTop_CT_DonHang" Member="CT_DonHangs" ThisKey="MaLapTop" OtherKey="MaLapTop" Type="CT_DonHang" />
+      <Association Name="Chip_LapTop" Member="Chip" ThisKey="MaChip" OtherKey="MaChip" Type="Chip" IsForeignKey="true" />
+      <Association Name="LoaiLapTop_LapTop" Member="LoaiLapTop" ThisKey="MaLoaiLT" OtherKey="MaLoaiLT" Type="LoaiLapTop" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiLapTop" Member="LoaiLapTops">
+    <Type Name="LoaiLapTop">
+      <Column Name="MaLoaiLT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="LoaiLapTop_LapTop" Member="LapTops" ThisKey="MaLoaiLT" OtherKey="MaLoaiLT" Type="LapTop" />
+    </Type>
+  </Table>
+</Database>

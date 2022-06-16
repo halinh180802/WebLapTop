@@ -1,0 +1,75 @@
+﻿@model WebLapTop.Models.LapTop
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>LapTop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLoaiLT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiLT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLapTop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLapTop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.Hinh)" width="200px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaChip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaChip)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLapTop }) |
+    @Html.ActionLink("Back to List", "ListLapTop", "LapTop")
+</p>

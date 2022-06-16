@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebLapTop.Models.LapTop>
+@{
+    ViewBag.Title = "ListLapTop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>THÔNG TIN LAPTOP</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", "LapTop")
+</p>
+<table class="table">
+
+    <tr>
+        <th> Mã LopTop </th>
+        <th> Tên LopTop</th>
+        <th> Hình </th>
+        <th> Giá bán</th>
+        <th> Ngày cập nhật </th>
+        <th> Số lượng tồn</th>
+        <th> Mã loại </th>
+        <th> Mã Chip </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@Html.DisplayFor(modelItem => item.MaLapTop)</td>
+            <td>@Html.DisplayFor(modelItem => item.TenLapTop)</td>
+            <td><img src="@item.Hinh" width="200px " alt="hinh thumbnail" /></td>
+            <td>@Html.DisplayFor(modelItem => item.GiaBan)</td>
+            <td>@Html.DisplayFor(modelItem => item.NgayCapNhap)</td>
+            <td>@Html.DisplayFor(modelItem => item.SoLuongTon)</td>
+            <td>@Html.DisplayFor(modelItem => item.MaLoaiLT)</td>
+            <td>@Html.DisplayFor(modelItem => item.MaChip)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaLapTop }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.MaLapTop }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaLapTop })
+            </td>
+        </tr>
+    }
+</table>
+
