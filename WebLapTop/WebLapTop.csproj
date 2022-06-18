@@ -158,6 +158,11 @@
     <Content Include="Content\images\tpx11.jpg" />
     <Content Include="Content\images\tpx1111.jpg" />
     <Content Include="Content\images\TUFA151.jpg" />
+    <Content Include="Content\Logo\Logo1.png" />
+    <Content Include="Content\Logo\Logo2.png" />
+    <Content Include="Content\Logo\Logo3.png" />
+    <Content Include="Content\Logo\Logo4.png" />
+    <Content Include="Content\Logo\Logo5.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
