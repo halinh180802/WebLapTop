@@ -149,10 +149,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\asusrogm16.jpg" />
+    <Content Include="Content\images\cac_thanh_vien.png" />
     <Content Include="Content\images\hpvictus16.jpg" />
     <Content Include="Content\images\mac14.jpg" />
     <Content Include="Content\images\mac16.jpg" />
     <Content Include="Content\images\nitro5.jpg" />
+    <Content Include="Content\images\qua_trinh_phat_trien.png" />
+    <Content Include="Content\images\su_menh.png" />
     <Content Include="Content\images\thinkpadx1.png" />
     <Content Include="Content\images\tpx1.png" />
     <Content Include="Content\images\tpx11.jpg" />
