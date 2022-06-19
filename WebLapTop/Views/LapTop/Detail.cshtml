@@ -5,14 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detail</h2>
+<h2>Chi Tiết LapTop</h2>
 
 <div>
-    <h4>LapTop</h4>
+    @*<h4>LapTop</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MaLoaiLT)
+            @*@Html.DisplayNameFor(model => model.MaLoaiLT)*@
+            <label>Mã Loại: </label>
         </dt>
 
         <dd>
@@ -20,7 +21,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenLapTop)
+            <label>Tên LapTop: </label>
+            @*@Html.DisplayNameFor(model => model.TenLapTop)*@
         </dt>
 
         <dd>
@@ -28,7 +30,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hinh)
+            <label>Hình: </label>
+            @*@Html.DisplayNameFor(model => model.Hinh)*@
         </dt>
 
         <dd>
@@ -36,7 +39,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
+            <label>Gía Bán: </label>
+            @*@Html.DisplayNameFor(model => model.GiaBan)*@
         </dt>
 
         <dd>
@@ -44,7 +48,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayCapNhap)
+            <label>Ngày Cập Nhập: </label>
+            @*@Html.DisplayNameFor(model => model.NgayCapNhap)*@
         </dt>
 
         <dd>
@@ -52,7 +57,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+            <label>Số Lượng Tồn: </label>
+            @*@Html.DisplayNameFor(model => model.SoLuongTon)*@
         </dt>
 
         <dd>
@@ -60,7 +66,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MaChip)
+            <label>Mã Chíp: </label>
+            @*@Html.DisplayNameFor(model => model.MaChip)*@
         </dt>
 
         <dd>
@@ -70,6 +77,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLapTop }) |
-    @Html.ActionLink("Back to List", "ListLapTop", "LapTop")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.MaLapTop }) |*@
+    @Html.ActionLink("Quay về trang chủ", "Index", "Home")
 </p>

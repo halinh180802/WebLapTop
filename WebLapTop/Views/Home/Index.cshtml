@@ -26,7 +26,10 @@
                         <div class="DatMua">
                             <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",
                         new { @id = item.MaLapTop, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                            <a class="btn btn-success" href="@Url.Action("Detail", "LapTop",
+                        new { @id = item.MaLapTop, @strURL = Request.Url.ToString() })">Chi Tiết</a>
                         </div>
+                      
                     </div>
                 </div>
             </div>

@@ -151,6 +151,11 @@
     <Content Include="Content\images\asusrogm16.jpg" />
     <Content Include="Content\images\cac_thanh_vien.png" />
     <Content Include="Content\images\hpvictus16.jpg" />
+    <Content Include="Content\images\Logo1.png" />
+    <Content Include="Content\images\Logo2.png" />
+    <Content Include="Content\images\Logo3.png" />
+    <Content Include="Content\images\Logo4.png" />
+    <Content Include="Content\images\Logo5.png" />
     <Content Include="Content\images\mac14.jpg" />
     <Content Include="Content\images\mac16.jpg" />
     <Content Include="Content\images\nitro5.jpg" />
