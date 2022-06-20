@@ -22,6 +22,7 @@ namespace WebLapTop.Controllers
             }
             return lstgiohang;
         }
+        //Them Gio Hang
 
         public ActionResult ThemGioHang(int id, string strURL)
         {
