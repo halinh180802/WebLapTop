@@ -10,11 +10,19 @@
 
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.tenlaptop)</th>
-        <th>@Html.DisplayNameFor(model => model.hinh)</th>
-        <th>@Html.DisplayNameFor(model => model.giaban)</th>
-        <th>@Html.DisplayNameFor(model => model.iSoLuong)</th>
-        <th>@Html.DisplayNameFor(model => model.dThanhTien)</th>
+
+        @*<th>@Html.DisplayNameFor(model => model.tenlaptop)</th>*@
+        <th>Mã LapTop</th>
+        @*<th>@Html.DisplayNameFor(model => model.hinh)</th>*@
+        <th>Tên LapTop</th>
+        @*<th>@Html.DisplayNameFor(model => model.giaban)</th>*@
+        <th>Hình</th>
+        <th>Gía Bán</th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+
+        @*<th>@Html.DisplayNameFor(model => model.iSoLuong)</th>
+        <th>@Html.DisplayNameFor(model => model.dThanhTien)</th>*@
         <th></th>
         <th></th>
 
@@ -38,8 +46,8 @@
         </tr>
     }
     <tr style="font-weight:bold; text-align:left; color:red">
-        <td colspan="2"> Số loại sách: @ViewBag.Tongsoluongsanpham</td>
-        <td colspan="2"> Số lượng sách: @ViewBag.Tongsoluong</td>
+        <td colspan="2"> Số loại laptop: @ViewBag.Tongsoluongsanpham</td>
+        <td colspan="2"> Số lượng LapTop: @ViewBag.Tongsoluong</td>
         <td colspan="4"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
     </tr>
     <tr style="font-weight: bold; color: red; text-align: right">

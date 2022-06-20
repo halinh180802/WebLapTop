@@ -12,7 +12,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.malaptop)
+            @*@Html.DisplayNameFor(model => model.malaptop)*@
+        <th>Mã LapTop</th>
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.tenlaptop)
@@ -79,7 +81,7 @@
         @Html.ValidationSummary(true)
         <tr>
             <td>Họ tên khách hàng:  </td>
-            <td>@kh.HoTen</td>
+            <td> @kh.HoTen </td>
         </tr>
         <tr>
             <td>Địa chỉ: </td>
@@ -100,7 +102,10 @@
         </tr>
         <tr>
             <td></td>
+            <br />
             <td><input type="submit" value="Đồng ý đặt hàng" /></td>
         </tr>
+        <br />
     }
 </table>
+<br /><br /><br />
